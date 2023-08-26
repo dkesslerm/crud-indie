@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { ListComponent } from './pages/list/list.component';
-import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { ListPageComponent } from './pages/list-page/list-page.component';
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
 
 const routes: Routes = [
   {
     path: 'list',
-    component: ListComponent
+    component: ListPageComponent
   },
   {
     path: 'edit',
-    component: EditUserComponent
+    component: EditPageComponent
   },
   {
     path: '**',
@@ -27,4 +27,4 @@ const routes: Routes = [
     RouterModule
   ],
 })
-export class UserRoutingModule { }
+export class AdminRoutingModule { }

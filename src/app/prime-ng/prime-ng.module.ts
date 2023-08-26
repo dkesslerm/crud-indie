@@ -8,6 +8,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar'
 import { TableModule } from 'primeng/table'
+import { ToastModule } from 'primeng/toast'
 
 @NgModule({
   exports: [
@@ -18,7 +19,8 @@ import { TableModule } from 'primeng/table'
     MenubarModule,
     PanelModule,
     ToolbarModule,
-    TableModule
+    TableModule,
+    ToastModule,
   ]
 })
 export class PrimeNgModule { }
