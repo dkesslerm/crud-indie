@@ -1,11 +1,9 @@
 
 <div class="p-2">
   <p-sidebar [(visible)]="sidebarVisible">
-      <h3>Sidebar</h3>
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
+    <div class="card flex justify-content-center">
+      <p-listbox [options]="sidebarComponents" [style]="{'width':'15rem'}" ></p-listbox>
+    </div>
   </p-sidebar>
   <p-button styleClass="p-button-secondary" (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
 </div>

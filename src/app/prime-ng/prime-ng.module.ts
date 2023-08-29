@@ -5,6 +5,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete'
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
+import { ListboxModule } from 'primeng/listbox'
 
 @NgModule({
   exports: [
@@ -12,7 +13,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     AutoCompleteModule,
     SidebarModule,
     ButtonModule,
-    ToolbarModule
+    ToolbarModule,
+    ListboxModule
   ]
 })
 export class PrimeNgModule { }
