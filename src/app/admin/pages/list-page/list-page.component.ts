@@ -8,7 +8,31 @@ import { UserService } from '../../services/user.service';
 })
 export class ListPageComponent implements OnInit{
 
-  public users: User[] = [];
+  public users: User[] = [
+    {
+        "id": "402832f98a28210f018a282133950000",
+        "password": "$2a$10$b8BYucBQv47pigg.JIFqeePgZfZi5CpM6QJKEFNmT9N1LqURkey9y",
+        "enabled": false,
+        "nombre": "David",
+        "apellido": "Kessler",
+        "email": "dkesslerm@gmail.com",
+        "roles": [
+            {
+              "id": 3,
+              "nombre": "ROLE_INDIE_USER"
+            },
+            {
+              "id": 1,
+              "nombre": "ROLE_USER"
+            }
+
+        ],
+        "intentos": 0,
+        "avatar": null,
+        "topt": false,
+        "secret": null
+      }
+  ];
 
   constructor( private userService: UserService ){}
 

@@ -9,7 +9,7 @@ import { User } from '../interfaces/user.interface';
 })
 export class UserService {
 
-  private baseUrl: string = environments.baseURL;
+  private baseUrl: string = environments.proxyURL;
 
   constructor( private http: HttpClient ) { }
 

@@ -3,28 +3,23 @@
 </div>
 
 <ng-template #table>
-  <table class="table table-hover">
-    <thead>
+  <p-table [value]="users" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
       <tr>
-        <th>ID</th>
-        <th>Status</th>
-        <th>Permisos</th>
-        <th></th>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Role</th>
+          <th>Editar</th>
       </tr>
-    </thead>
+    </ng-template>
 
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
-        <td>{{user.enabled}}</td>
-        <td>{{user.roles}}</td>
-        <!-- <td>
-          <a [routerLink]="[ '/countries/by', country.cca3]">Info</a>
-        </td> -->
+    <ng-template *ngFor="let user of users" pTemplate="body">
+      <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.enabled | enabled }}</td>
+          <td>{{ user.roles | role}}</td>
+          <td><a [routerLink]="['/admin', user.id]">Info</a></td>
       </tr>
-    </tbody>
-
-  </table>
-
+    </ng-template>
+  </p-table>
 </ng-template>
-
