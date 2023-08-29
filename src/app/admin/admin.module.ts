@@ -5,11 +5,13 @@ import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
     ListPageComponent,
-    EditPageComponent
+    EditPageComponent,
+    SearchPageComponent,
   ],
   imports: [
     CommonModule,

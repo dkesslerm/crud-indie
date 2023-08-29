@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 
@@ -6,9 +6,17 @@ import { UserService } from '../../services/user.service';
   selector: 'admin-list-page',
   templateUrl: './list-page.component.html',
 })
-export class ListPageComponent {
+export class ListPageComponent implements OnInit{
 
-  private users: User[] = [];
+  public users: User[] = [];
 
   constructor( private userService: UserService ){}
+
+  ngOnInit(): void {
+    console.log('pasando por el ngInit')
+    this.userService.getUsers()
+      .subscribe( users => this.users = users )
+  }
+
+
 }

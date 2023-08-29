@@ -10,7 +10,6 @@ import { User } from '../interfaces/user.interface';
 export class UserService {
 
   private baseUrl: string = environments.baseURL;
-  //private user: User;
 
   constructor( private http: HttpClient ) { }
 
@@ -19,7 +18,7 @@ export class UserService {
   }
 
   public getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`${ this.baseUrl }/admin/`);
+    return this.http.get<User[]>(`${ this.baseUrl }/admin`);
   }
 
   public getUserByEmail(email: string): Observable<User>{
@@ -27,22 +26,26 @@ export class UserService {
   }
 
   public getUserById(id: string): Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/admin/${ id }`)
+    return this.http.get<User>(`${this.baseUrl}/admin/${ id }`);
+  }
+
+  public getSuggestions(query: string): Observable<User[]>{
+    return this.http.get<User[]>(`${ this.baseUrl }/admin?q=${ query }&_limit=6`);
   }
 
   public getEnabledUsers(enabledFlag: boolean): Observable<User[]>{
     return this.http.get<User[]>(`${ this.baseUrl }/admin/enabled/${ enabledFlag }`);
   }
 
-  // public activateUserById(id: string): Observable<User>{
-  //  return this.http.put<User>(`${ this.baseUrl }/admin/activate/${ id }`, this.user);
-  // }
+  public activateUserById(id: string): Observable<User>{
+   return this.http.patch<User>(`${ this.baseUrl }/admin/activate/${ id }`, null);
+  }
 
-  // public deactivateUserById(id: string): Observable<User>{
-  //   return this.http.put<User>(`${ this.baseUrl }/admin/deactivate/${ id }`)
-  // }
+  public deactivateUserById(id: string): Observable<User>{
+    return this.http.patch<User>(`${ this.baseUrl }/admin/deactivate/${ id }`, null)
+  }
 
-  // public editUserById(id: string): Observable<User>{
-  //   return this.http.put<User>(`${ this.baseUrl }/admin/${ id }`);
-  // }
+  public editUserById(id: string): Observable<User>{
+    return this.http.put<User>(`${ this.baseUrl }/admin/${ id }`, null);
+  }
 }

@@ -1,26 +1,16 @@
 import { NgModule } from '@angular/core';
 
-// import { MenuModule } from 'primeng/menu';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { FieldsetModule } from 'primeng/fieldset';
-import { MenubarModule } from 'primeng/menubar';
-import { PanelModule } from 'primeng/panel';
-import { ToolbarModule } from 'primeng/toolbar'
 import { TableModule } from 'primeng/table'
-import { ToastModule } from 'primeng/toast'
+import { AutoCompleteModule } from 'primeng/autocomplete'
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button'
 
 @NgModule({
   exports: [
-    // MenuModule,
-    ButtonModule,
-    CardModule,
-    FieldsetModule,
-    MenubarModule,
-    PanelModule,
-    ToolbarModule,
     TableModule,
-    ToastModule,
+    AutoCompleteModule,
+    SidebarModule,
+    ButtonModule
   ]
 })
 export class PrimeNgModule { }
