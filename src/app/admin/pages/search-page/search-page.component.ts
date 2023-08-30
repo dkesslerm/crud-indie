@@ -3,25 +3,30 @@ import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
-import { AutoComplete, AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'admin-search-page',
   templateUrl: './search-page.component.html',
 })
-export class SearchPageComponent{
+export class SearchPageComponent implements OnInit{
 
-  private userList: User[] = [];
+  value: string | undefined;
+  private searchInput = new FormControl();
+  private users: User[] = [];
   private selectedUser?: User;
-
+  private formGroup = new FormGroup({ searchInput: new FormControl<object|null>(null) });
   constructor(
     private userService: UserService,
     private router: Router
   ){}
 
-  public searchById(event: AutoCompleteCompleteEvent): void{
-
-
+  ngOnInit() {
+    this.userService.getUsers().subscribe((users) => {
+        this.users = users;
+    });
   }
 
+
 }
+
+

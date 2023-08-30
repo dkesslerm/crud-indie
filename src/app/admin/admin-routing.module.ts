@@ -12,21 +12,32 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       {
+        path: ':id',
+        component: EditPageComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'search-by-email/:id',
+        component: SearchPageComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'search-by-id/:id',
+        component: SearchPageComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'new',
+        component: EditPageComponent
+      },
+      {
         path: '',
         component: ListPageComponent
       },
       {
-        path: ':id',
-        component: EditPageComponent
-      },
-      {
-        path: 'email/:id',
-        component: SearchPageComponent
-      },
-      {
         path: '**',
         redirectTo: ''
-      }
+      },
     ]
   }
 

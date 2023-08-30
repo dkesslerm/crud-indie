@@ -1,1 +1,39 @@
-<p>edit works!</p>
+<div class="grid flex justify-content-center m-5">
+  <p-card header="{{ currentUser.id ? 'Editar' : 'Agregar' }} usuario" class="text-center">
+
+    <div class="card flex justify-content-center m-5">
+      <span class="p-float-label">
+          <input pInputText id="username" formControlName="email"/>
+          <label htmlFor="username">Correo</label>
+      </span>
+    </div>
+
+    <div class="card flex justify-content-center m-5">
+      <span class="p-float-label">
+        <p-password formControlName="password" [toggleMask]="true"></p-password>
+        <label for="password">Password</label>
+      </span>
+    </div>
+
+    <div class="card flex justify-content-center m-5">
+      <span class="p-float-label">
+          <input pInputText formControlName="nombre"/>
+          <label>Nombre</label>
+      </span>
+    </div>
+
+    <div class="card flex justify-content-center m-5">
+      <span class="p-float-label">
+          <input pInputText formControlName="apellidos"/>
+          <label>Apellidos</label>
+      </span>
+    </div>
+
+    <div class="card flex justify-content-center m-5">
+      <span class="p-float-label">
+          <input pInputText formControlName="aplicacion"/>
+          <label>Aplicacion</label>
+      </span>
+    </div>
+  </p-card>
+</div>

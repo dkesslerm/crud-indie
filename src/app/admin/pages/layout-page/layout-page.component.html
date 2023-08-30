@@ -1,14 +1,9 @@
-
 <div class="p-2">
-  <p-sidebar [(visible)]="sidebarVisible">
-    <div class="card flex justify-content-center">
-      <p-listbox [options]="sidebarComponents" [style]="{'width':'15rem'}" ></p-listbox>
-    </div>
-  </p-sidebar>
-  <p-button styleClass="p-button-secondary" (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+  <p-menubar [model]="menuItems">
+    <img src="./favicon.ico" width="128" height="36" alt="Icono">
+  </p-menubar>
 </div>
 
 <div class="container p-2">
   <router-outlet></router-outlet>
 </div>
-

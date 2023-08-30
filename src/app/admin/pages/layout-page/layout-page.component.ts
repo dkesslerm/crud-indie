@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
-import { SidebarComponent } from '../../interfaces/sidebar-component.interface';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api'
 
 @Component({
   selector: 'app-layout-page',
   templateUrl: './layout-page.component.html',
 })
-export class LayoutPageComponent {
+export class LayoutPageComponent implements OnInit{
 
   public sidebarVisible: boolean = false;
-  public sidebarComponents: SidebarComponent[] = [
-    { label: 'Listado', icon: 'pi pi-list', url: '' },
-    { label: 'Añadir', icon: 'pi pi-plus', url: '' },
-    { label: 'Buscar usuario', icon: 'pi pi-search', url: '' },
-  ]
+  public menuItems: MenuItem[] = []
 
-  public selectedComponent!: SidebarComponent;
+  ngOnInit(): void {
+    this.menuItems = [
+      { label: 'Listado', icon: 'pi pi-list', routerLink: '/'},
+      { label: 'Añadir', icon: 'pi pi-plus', routerLink: 'new' },
+      { label: 'Buscar usuario', icon: 'pi pi-search', items:
+        [
+          {
+            label: 'Por email',
+            icon: 'pi pi-envelope',
+            routerLink: 'search-by-email/123'
+          },
+          {
+            label: 'Por ID',
+            icon: 'pi pi-user',
+            routerLink: 'search-by-id/123'
+          }
+        ]
+      },
+    ];
+  }
+
+
+
 }

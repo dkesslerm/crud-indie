@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Error404pageComponent } from './pages/error404page/error404page.component';
 
 @NgModule({
@@ -11,7 +10,6 @@ import { Error404pageComponent } from './pages/error404page/error404page.compone
   exports: [
   ],
   declarations: [
-    SidenavComponent,
     Error404pageComponent
   ],
 })
