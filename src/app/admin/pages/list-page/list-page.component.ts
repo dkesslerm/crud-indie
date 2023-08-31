@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'admin-list-page',
   templateUrl: './list-page.component.html',
 })
-export class ListPageComponent implements OnInit{
+export class ListPageComponent{
+
+  @Output()
+  public userEmitter: EventEmitter<User[]> = new EventEmitter();
 
   public users: User[] = [
     {
@@ -34,13 +36,11 @@ export class ListPageComponent implements OnInit{
       }
   ];
 
-  constructor( private userService: UserService ){}
-
-  ngOnInit(): void {
-    console.log('pasando por el ngInit')
-    this.userService.getUsers()
-      .subscribe( users => this.users = users )
+  public emitUserList(): void {
+    this.userEmitter.emit(this.users)
   }
 
-
+  public receiveUsers(users: User[]): void{
+    this.users = users;
+  }
 }

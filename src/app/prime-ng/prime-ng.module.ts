@@ -9,6 +9,10 @@ import { ListboxModule } from 'primeng/listbox'
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card'
+import { DropdownModule} from 'primeng/dropdown';
+import { DividerModule } from 'primeng/divider';
+import { CheckboxModule } from 'primeng/checkbox';
+
 
 @NgModule({
   exports: [
@@ -20,7 +24,10 @@ import { CardModule } from 'primeng/card'
     ListboxModule,
     InputTextModule,
     PasswordModule,
-    CardModule
+    CardModule,
+    DropdownModule,
+    DividerModule,
+    CheckboxModule
   ]
 })
 export class PrimeNgModule { }

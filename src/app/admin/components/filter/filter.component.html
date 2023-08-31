@@ -1,0 +1,17 @@
+<p-menubar [model]="filterComponents">
+  <div class="p-toolbar-group-end">
+    <p-button
+      (onClick)="byEnabled( true )"
+      label="Activados"
+      icon="pi pi-sort"
+      styleClass="p-button-success mx-1"
+    ></p-button>
+
+    <p-button
+      (onClick)="byEnabled( false )"
+      label="Desactivados"
+      icon="pi pi-sort"
+      styleClass="p-button-danger mx-1"
+    ></p-button>
+  </div>
+</p-menubar>

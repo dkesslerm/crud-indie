@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'admin-search-page',
@@ -24,6 +25,14 @@ export class SearchPageComponent implements OnInit{
     this.userService.getUsers().subscribe((users) => {
         this.users = users;
     });
+  }
+
+  public onSelectedOption(event: AutoCompleteCompleteEvent): void{
+    if (!event.query){
+      this.selectedUser = undefined;
+      return;
+    }
+
   }
 
 

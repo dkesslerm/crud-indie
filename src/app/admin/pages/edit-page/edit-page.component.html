@@ -1,39 +1,50 @@
-<div class="grid flex justify-content-center m-5">
-  <p-card header="{{ currentUser.id ? 'Editar' : 'Agregar' }} usuario" class="text-center">
+<div class="flex justify-content-center mt-5">
 
-    <div class="card flex justify-content-center m-5">
-      <span class="p-float-label">
-          <input pInputText id="username" formControlName="email"/>
-          <label htmlFor="username">Correo</label>
-      </span>
-    </div>
+  <form class="grid" (formdata)="userForm" (ngSubmit)="onSubmit()">
+    <p-card header="{{ currentUser.id ? 'Editar' : 'Agregar' }} usuario" class="text-center">
 
-    <div class="card flex justify-content-center m-5">
-      <span class="p-float-label">
-        <p-password formControlName="password" [toggleMask]="true"></p-password>
-        <label for="password">Password</label>
-      </span>
-    </div>
+      <div class="justify-content-center m-5 mt-2">
+        <span style="width: 100%;" class="p-float-label">
+            <input [style]="{'width':'100%'}" pInputText formControlName="email"/>
+            <label>Correo</label>
+        </span>
+      </div>
 
-    <div class="card flex justify-content-center m-5">
-      <span class="p-float-label">
-          <input pInputText formControlName="nombre"/>
-          <label>Nombre</label>
-      </span>
-    </div>
+      <div class="justify-content-center m-5">
+        <span class="p-float-label">
+          <p-password formControlName="password" [toggleMask]="true"></p-password>
+          <label for="password">Password</label>
+        </span>
+      </div>
 
-    <div class="card flex justify-content-center m-5">
-      <span class="p-float-label">
-          <input pInputText formControlName="apellidos"/>
-          <label>Apellidos</label>
-      </span>
-    </div>
+      <div class="justify-content-center m-5">
+        <span style="width: 100%;" class="p-float-label">
+            <input [style]="{'width':'100%'}" pInputText formControlName="nombre"/>
+            <label>Nombre</label>
+        </span>
+      </div>
 
-    <div class="card flex justify-content-center m-5">
-      <span class="p-float-label">
-          <input pInputText formControlName="aplicacion"/>
-          <label>Aplicacion</label>
-      </span>
-    </div>
-  </p-card>
+      <div class="justify-content-center m-5">
+        <span style="width: 100%;" class="p-float-label">
+            <input [style]="{'width':'100%'}" pInputText formControlName="apellidos"/>
+            <label>Apellidos</label>
+        </span>
+      </div>
+
+      <div style="background-color:aqua;" class="m-5">
+        <!-- <span style="width: 100%;"> -->
+          <p-dropdown
+            placeholder="Aplicacion"
+            formControlName="aplicacion"
+            [style]="{'display':'block'}"
+            [options]="aplicaciones"
+            optionLabel="name"></p-dropdown>
+        <!-- </span> -->
+      </div>
+
+      <div class="flex justify-content-center mt-5">
+        <p-button (click)="onSubmit()" label="Aceptar" icon="pi pi-check" styleClass="p-button-raised p-button-secondary"></p-button>
+      </div>
+    </p-card>
+  </form>
 </div>

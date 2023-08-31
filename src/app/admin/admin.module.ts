@@ -9,6 +9,8 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { RolePipe } from './pipes/role.pipe';
 import { EnabledPipe } from './pipes/enabled.pipe';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 
     RolePipe,
     EnabledPipe,
+    FilterComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
