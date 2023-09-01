@@ -9,6 +9,7 @@ import { User } from '../../interfaces/user.interface';
 export class FilterComponent implements OnInit{
   public filterComponents: MenuItem[] = [];
 
+
   @Input()
   public users: User[] = [];
 
@@ -19,25 +20,21 @@ export class FilterComponent implements OnInit{
 
   ngOnInit(): void {
     this.filterComponents = [
-      { label: 'Filtros', icon: 'pi pi-filter', items:
-        [
-          {
-            label: 'Activados',
-            icon: 'pi pi-check',
-          },
-          {
-            label: 'Desactivados',
-            icon: 'pi pi-times'
-          },
-          {
-            label: 'Usuario',
-            icon: 'pi pi-user'
-          },
-          {
-            label: 'Administrador',
-            icon: 'pi pi-shield'
-          }
-        ]
+      {
+        label: 'Activados',
+        icon: 'pi pi-check',
+      },
+      {
+        label: 'Desactivados',
+        icon: 'pi pi-times'
+      },
+      {
+        label: 'Usuario',
+        icon: 'pi pi-user'
+      },
+      {
+        label: 'Administrador',
+        icon: 'pi pi-shield'
       }
     ]
   }

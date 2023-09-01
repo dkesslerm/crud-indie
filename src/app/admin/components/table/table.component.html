@@ -1,19 +1,21 @@
-<p-table [value]="users" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header">
-    <tr>
-        <th>ID</th>
-        <th>Status</th>
-        <th>Role</th>
-        <th>Editar</th>
-    </tr>
-  </ng-template>
+<div class="col-12">
+  <p-table [value]="users" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Role</th>
+          <th>Editar</th>
+      </tr>
+    </ng-template>
 
-  <ng-template *ngFor="let user of users" pTemplate="body">
-    <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.enabled | enabled }}</td>
-        <td>{{ user.roles | role}}</td>
-        <td><p-button icon="pi pi-user-edit" styleClass="p-button-rounded p-button-secondary p-button-text" [routerLink]="['/admin', user.id]"></p-button></td>
-    </tr>
-  </ng-template>
-</p-table>
+    <ng-template *ngFor="let user of users" pTemplate="body">
+      <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.enabled | enabled }}</td>
+          <td>{{ user.roles | role}}</td>
+          <td><p-button icon="pi pi-user-edit" styleClass="p-button-rounded p-button-secondary p-button-text" [routerLink]="['/admin', user.id]"></p-button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

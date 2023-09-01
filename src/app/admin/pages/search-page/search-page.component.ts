@@ -12,7 +12,7 @@ export class SearchPageComponent implements OnInit{
 
   public searchInput = new FormControl();
   private users: User[] = [];
-  private selectedUser?: User;
+  private selectedUser?: User | undefined;
 
   constructor(
     private userService: UserService,
@@ -31,10 +31,15 @@ export class SearchPageComponent implements OnInit{
     if (this.router.url.includes('search-by-email')){
       this.userService.getUserByEmail(value)
         .subscribe( user => this.selectedUser = user);
+
     } else {
       this.userService.getUserById(value)
         .subscribe ( user => this.selectedUser = user);
     }
+  }
+
+  public onSelectedOption(): void{
+
   }
 
 }
