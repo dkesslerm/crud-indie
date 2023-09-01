@@ -51,6 +51,7 @@ export class EditPageComponent implements OnInit {
   }
 
   public onSubmit(): void{
+
     if (this.userForm.invalid) return;
 
     if (this.currentUser.id){
@@ -59,6 +60,29 @@ export class EditPageComponent implements OnInit {
           this.router.navigate(['/'])
         })
     }
+
+    this.userService.createUser ( this.currentUser )
+      .subscribe ( user => {
+        this.router.navigate(['/'])
+      });
+  }
+
+  public changeState(){
+    this.currentUser.enabled = !this.currentUser.enabled;
+  }
+
+  get stateLabel(): string {
+    if (this.currentUser.enabled)
+      return 'Desactivar';
+    else
+      return 'Activar';
+  }
+
+  get stateIcon(): string {
+    if (this.currentUser.enabled)
+      return 'pi pi-times';
+    else
+      return 'pi pi-check';
   }
 
   get currentUser(): User{

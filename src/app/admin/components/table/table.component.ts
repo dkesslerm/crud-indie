@@ -14,12 +14,15 @@ export class TableComponent implements OnInit {
   @Output()
   public userEmitter: EventEmitter<User[]> = new EventEmitter();
 
-
   constructor( private userService: UserService ){}
 
   ngOnInit(): void {
     this.userService.getUsers()
       .subscribe( users => this.users = users );
+  }
+
+  tableToFilter(): void{
+    this.userEmitter.emit(this.users);
   }
 
 

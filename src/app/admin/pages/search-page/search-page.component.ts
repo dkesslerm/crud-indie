@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
-import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'admin-search-page',
@@ -11,11 +10,10 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 })
 export class SearchPageComponent implements OnInit{
 
-  value: string | undefined;
-  private searchInput = new FormControl();
+  public searchInput = new FormControl();
   private users: User[] = [];
   private selectedUser?: User;
-  private formGroup = new FormGroup({ searchInput: new FormControl<object|null>(null) });
+
   constructor(
     private userService: UserService,
     private router: Router
@@ -27,14 +25,17 @@ export class SearchPageComponent implements OnInit{
     });
   }
 
-  public onSelectedOption(event: AutoCompleteCompleteEvent): void{
-    if (!event.query){
-      this.selectedUser = undefined;
-      return;
+  searchUser(): void{
+    const value: string = this.searchInput.value || '';
+
+    if (this.router.url.includes('search-by-email')){
+      this.userService.getUserByEmail(value)
+        .subscribe( user => this.selectedUser = user);
+    } else {
+      this.userService.getUserById(value)
+        .subscribe ( user => this.selectedUser = user);
     }
-
   }
-
 
 }
 

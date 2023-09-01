@@ -1,8 +1,8 @@
-<div class="grid flex justify-content-center m-5">
-  <p-card header="Búsqueda de usuarios" class="text-center">
+<div class="flex justify-content-center m-5">
+  <p-card header="Búsqueda de usuarios">
     <span class="p-input-icon-left">
       <i class="pi pi-search"></i>
-      <input type="text" pInputText formControlName="value"/>
+      <input type="text" pInputText formControlName="searchInput" (input)="searchUser()"/>
     </span>
   </p-card>
 </div>

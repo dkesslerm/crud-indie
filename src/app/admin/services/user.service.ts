@@ -9,12 +9,12 @@ import { User } from '../interfaces/user.interface';
 })
 export class UserService {
 
-  private baseUrl: string = environments.proxyURL;
+  private baseUrl: string = environments.baseURL;
 
   constructor( private http: HttpClient ) { }
 
   public createUser(user: User): Observable<User>{
-    return this.http.post<User>(`${ this.baseUrl }/admin`, user)
+    return this.http.post<User>(`${ this.baseUrl }/admin`, user);
   }
 
   public getUsers(): Observable<User[]>{

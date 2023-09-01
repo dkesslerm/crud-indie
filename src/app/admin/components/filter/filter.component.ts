@@ -54,4 +54,8 @@ export class FilterComponent implements OnInit{
     this.users = filteredUsers;
   }
 
+  filterToTable(): void{
+    this.userEmitter.emit(this.users);
+  }
+
 }
