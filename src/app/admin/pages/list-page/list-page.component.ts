@@ -1,19 +1,20 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'admin-list-page',
   templateUrl: './list-page.component.html',
 })
-export class ListPageComponent{
+export class ListPageComponent implements OnInit{
 
-  private users: User[] = [];
+  public users: User[] = [];
 
-  get userList(): User[]{
-    return this.users;
-  }
+  constructor( private userService: UserService ){}
 
-  public receiveUsers(users: User[]): void{
-    this.users = users;
+  ngOnInit(): void {
+    this.userService.getUsers()
+      .subscribe( (users: User[]) => this.users = users );
+    console.log(this.users)
   }
 }

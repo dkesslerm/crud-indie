@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 
 const routes: Routes = [
@@ -14,16 +13,6 @@ const routes: Routes = [
       {
         path: ':id',
         component: EditPageComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'search-by-email/:id',
-        component: SearchPageComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'search-by-id/:id',
-        component: SearchPageComponent,
         pathMatch: 'full'
       },
       {

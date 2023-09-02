@@ -1,31 +1,34 @@
 <div class="col-12">
   <p-table
     #tabla
-    [value]="userList"
+    [value]="users"
     styleClass="p-datatable-gridlines"
     [tableStyle]="{ 'min-width': '50rem' }"
     [paginator]="true"
-    [loading]="loadingStatus"
     [rows]="5"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[5, 10, 20]"
-    [globalFilterFields]="['id', 'email']"
+    [globalFilterFields]="['id', 'nombre', 'apellido', 'email']"
   >
 
     <ng-template pTemplate="header">
 
       <tr>
-        <th style="width: 30%;">ID</th>
-        <th style="width: 30%;">Email</th>
+        <th pSortableColumn="nombre" style="width: 10%;">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+        <th pSortableColumn="apellido" style="width: 20%;">Apellidos <p-sortIcon field="apellido"></p-sortIcon></th>
+        <th pSortableColumn="email" style="width: 20%;">Email <p-sortIcon field="email"></p-sortIcon></th>
         <th style="width: 15%;">Status</th>
         <th style="width: 15%;">Role</th>
-        <th>Editar</th>
+        <th style="width: 15%;">Editar</th>
       </tr>
 
       <tr>
         <th>
-            <p-columnFilter type="text" field="id"></p-columnFilter>
+            <p-columnFilter type="text" field="nombre"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="apellido"></p-columnFilter>
         </th>
         <th>
           <p-columnFilter type="text" field="email"></p-columnFilter>
@@ -33,7 +36,7 @@
         <th>
             <p-columnFilter type="boolean" field="enabled"></p-columnFilter>
         </th>
-        <th style="width: 100%">
+        <th>
             <p-columnFilter type="boolean" field="verified"></p-columnFilter>
         </th>
     </tr>
@@ -42,7 +45,8 @@
 
     <ng-template pTemplate="body" let-user>
       <tr>
-          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.enabled | enabled }}<i class="pi ml-2" [ngClass]="{ 'text-green-500 pi-check-circle': user.enabled, 'text-red-500 pi-times-circle': !user.enabled }"></i></td>
           <td><p-tag [value]="user.roles | role" [severity]="getSeverity(user.roles | role)"></p-tag></td>
