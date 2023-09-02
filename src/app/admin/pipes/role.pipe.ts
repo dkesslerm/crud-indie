@@ -9,9 +9,16 @@ export class RolePipe implements PipeTransform {
   transform(userRoles: Role[]): string {
     let roles: string = '';
 
-    userRoles.forEach( role => roles += role.nombre + " " )
+    if (userRoles.length > 1){
+      userRoles.forEach( role => roles += role.nombre + " " )
 
-    return roles.replace(' ', ', ');
+      return roles.replace(' ', ', ');
+    }
+    else {
+      roles += userRoles.at(0)?.nombre;
+      return roles
+    }
+
   }
 
 }

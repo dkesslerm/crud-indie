@@ -7,13 +7,10 @@ import { User } from '../../interfaces/user.interface';
 })
 export class ListPageComponent{
 
-  @Output()
-  public userEmitter: EventEmitter<User[]> = new EventEmitter();
+  private users: User[] = [];
 
-  public users: User[] = [];
-
-  public emitUserList(): void {
-    this.userEmitter.emit(this.users)
+  get userList(): User[]{
+    return this.users;
   }
 
   public receiveUsers(users: User[]): void{
