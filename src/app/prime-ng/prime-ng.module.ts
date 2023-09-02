@@ -11,7 +11,8 @@ import { CardModule } from 'primeng/card'
 import { DropdownModule} from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
-
+import { ToastModule } from 'primeng/toast'
+import { MultiSelectModule } from 'primeng/multiselect'
 
 @NgModule({
   exports: [
@@ -25,7 +26,9 @@ import { TagModule } from 'primeng/tag';
     CardModule,
     DropdownModule,
     DividerModule,
-    TagModule
+    TagModule,
+    MultiSelectModule,
+    ToastModule
   ]
 })
 export class PrimeNgModule { }

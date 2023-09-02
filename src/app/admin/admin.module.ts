@@ -9,6 +9,8 @@ import { RolePipe } from './pipes/role.pipe';
 import { EnabledPipe } from './pipes/enabled.pipe';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { TableComponent } from './components/table/table.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { TableComponent } from './components/table/table.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    ReactiveFormsModule
   ],
   exports: [],
 })

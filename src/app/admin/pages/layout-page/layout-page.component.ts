@@ -14,20 +14,6 @@ export class LayoutPageComponent implements OnInit{
     this.menuItems = [
       { label: 'Listado', icon: 'pi pi-list', routerLink: '/'},
       { label: 'Añadir', icon: 'pi pi-plus', routerLink: 'new' },
-      { label: 'Buscar usuario', icon: 'pi pi-search', items:
-        [
-          {
-            label: 'Por email',
-            icon: 'pi pi-envelope',
-            routerLink: 'search-by-email/123'
-          },
-          {
-            label: 'Por ID',
-            icon: 'pi pi-user',
-            routerLink: 'search-by-id/123'
-          }
-        ]
-      },
     ];
   }
 

@@ -30,12 +30,6 @@ export class EditPageComponent implements OnInit {
     {name: 'INDIe'},
   ]
 
-  // public password!: string;
-  // private nombre!: string;
-  // private apellidos!: string;
-  // private email!: string;
-  // private aplicacion: string = 'INDIe';
-
   ngOnInit(): void {
     if (this.router.url.includes('new')) return;
 
@@ -86,8 +80,12 @@ export class EditPageComponent implements OnInit {
   }
 
   get currentUser(): User{
-    const user = this.userForm.value as User;
-    return user;
+    let auxUser: User = this.userForm.value as User;
+
+    this.userService.createUser(this.userForm.value as User)
+    .subscribe( user => auxUser = user );
+
+    return auxUser;
   }
 
 
