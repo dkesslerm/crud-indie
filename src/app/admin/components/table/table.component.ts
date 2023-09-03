@@ -1,25 +1,43 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../interfaces/user.interface';
+import { Role, User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { FilterService, MessageService } from 'primeng/api';
+import { Tag } from 'primeng/tag';
 
 @Component({
   selector: 'admin-table',
   templateUrl: './table.component.html',
   providers: [MessageService]
 })
-export class TableComponent {
+export class TableComponent{
 
   @Input()
   public users: User[] = [];
 
   constructor( private userService: UserService,
-               private router: Router,
-               private messageService: MessageService ){}
+               private messageService: MessageService,
+               private filterService: FilterService
+  ){}
 
-  public possibleRoles: string[] = ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_INDIE_USER'];
+  filter(role: Role): boolean{
+    return this.filterService.filters['contains'](role.nombre, 'ROLE_INDIE_USER');
+  }
 
+  public possibleRoles: Role[] = [
+    {
+      id: 1,
+      nombre: 'ROLE_ADMIN'
+    },
+    {
+      id: 2,
+      nombre: 'ROLE_USER'
+    },
+    {
+      id: 3,
+      nombre: 'ROLE_INDIE_USER'
+    }
+  ];
 
   public getSeverity(role: string) {
     switch (role) {

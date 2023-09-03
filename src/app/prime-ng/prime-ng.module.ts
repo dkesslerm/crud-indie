@@ -13,6 +13,7 @@ import { DividerModule } from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast'
 import { MultiSelectModule } from 'primeng/multiselect'
+import { InputSwitchModule } from 'primeng/inputswitch'
 
 @NgModule({
   exports: [
@@ -28,7 +29,8 @@ import { MultiSelectModule } from 'primeng/multiselect'
     DividerModule,
     TagModule,
     MultiSelectModule,
-    ToastModule
+    ToastModule,
+    InputSwitchModule
   ]
 })
 export class PrimeNgModule { }

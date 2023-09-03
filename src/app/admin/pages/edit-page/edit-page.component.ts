@@ -80,7 +80,7 @@ export class EditPageComponent implements OnInit {
   }
 
   get currentUser(): User{
-    let auxUser: User = this.userForm.value as User;
+    let auxUser!: User;
 
     this.userService.createUser(this.userForm.value as User)
     .subscribe( user => auxUser = user );

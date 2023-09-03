@@ -19,6 +19,8 @@
         <th pSortableColumn="apellido" style="width: 20%;">Apellidos <p-sortIcon field="apellido"></p-sortIcon></th>
         <th pSortableColumn="email" style="width:15%;">Email <p-sortIcon field="email"></p-sortIcon></th>
         <th style="width: 10%;">Status</th>
+        <th style="width: 20%;">Roles</th>
+        <th><p-button styleClass="p-button-text p-button-warning">Añadir usuario</p-button></th>
 
       </tr>
 
@@ -35,19 +37,36 @@
         <th>
           <p-columnFilter type="boolean" field="enabled"></p-columnFilter>
         </th>
-        <th style="width: 20%;">Role</th>
-        <th style="width: 20%;">Editar</th>
-        <!-- <th>
-          <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+        <th>
+          <!-- <p-columnFilter field="roles" [matchMode]="'role-filter'" [showMenu]="false">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                <p-dropdown [options]="possibleRoles" (onChange)="filter($event.value)" placeholder="Any" [showClear]="true">
+                <p-multiSelect
+                  [ngModel]="value"
+                  [options]="possibleRoles"
+                  (onChange)="filter($event.value)"
+                  optionLabel="nombre"
+                  defaultLabel="Select Roles">
                     <ng-template let-role pTemplate="item">
-                        <p-tag [value]="role" [severity]="getSeverity(role)"></p-tag>
+                        <div class="inline-block vertical-align-middle">
+                            <span class="ml-1 mt-1">{{ role.nombre }}</span>
+                        </div>
+                    </ng-template>
+                </p-multiSelect>
+            </ng-template>
+          </p-columnFilter> -->
+          <p-columnFilter field="roles" matchMode="equals" [showMenu]="false">
+            <ng-template pTemplate="filter" let-nombre>
+                <p-dropdown [ngModel]="nombre" [options]="possibleRoles" (onChange)="filter($event.value)" optionLabel="nombre" placeholder="Any" [showClear]="true">
+                    <ng-template let-role pTemplate="item">
+                        <p-tag [value]="role.nombre" [severity]="getSeverity(role.nombre)"></p-tag>
                     </ng-template>
                 </p-dropdown>
             </ng-template>
           </p-columnFilter>
-        </th> -->
+
+        </th>
+        <th style="width: 20%;">Editar</th>
+
 
 
     </tr>
@@ -60,11 +79,12 @@
           <td>{{ user.apellido }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.enabled | enabled }}<i class="pi ml-2" [ngClass]="{ 'text-green-500 pi-check-circle': user.enabled, 'text-red-500 pi-times-circle': !user.enabled }"></i></td>
-          <td><p-tag class="m-1" *ngFor="let role of user.roles" [value]="role.nombre" [severity]="getSeverity(role.nombre)"></p-tag></td>
+          <!-- <td><p-tag class="m-1" *ngFor="let role of user.roles" [value]="role.nombre" [severity]="getSeverity(role.nombre)"></p-tag></td> -->
+          <td> {{ user.roles | role }}</td>
           <td>
             <p-toast></p-toast>
-            <p-button label="Activar" styleClass="p-button-success p-button-text p-button-sm" (onClick)="activateUserById(user.id)"></p-button>
-            <p-button label="Desactivar" styleClass="p-button-error p-button-text p-button-sm" (onClick)="deactivateUserById(user.id)"></p-button>
+            <p-button label="Activar" [disabled]="user.enabled" styleClass="p-button-success p-button-text p-button-sm" (onClick)="activateUserById(user.id)"></p-button>
+            <p-button label="Desactivar" [disabled]="!user.enabled" styleClass="p-button-error p-button-text p-button-sm" (onClick)="deactivateUserById(user.id)"></p-button>
             <p-button icon="pi pi-user-edit" styleClass="p-button-secondary p-button-text" [routerLink]="['/admin', user.id]"></p-button>
           </td>
       </tr>
