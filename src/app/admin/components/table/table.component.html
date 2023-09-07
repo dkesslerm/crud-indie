@@ -20,8 +20,6 @@
         <th pSortableColumn="email" style="width:15%;">Email <p-sortIcon field="email"></p-sortIcon></th>
         <th style="width: 10%;">Status</th>
         <th style="width: 20%;">Roles</th>
-        <th><p-button styleClass="p-button-text p-button-warning">Añadir usuario</p-button></th>
-
       </tr>
 
       <tr>
@@ -85,7 +83,7 @@
             <p-toast></p-toast>
             <p-button label="Activar" [disabled]="user.enabled" styleClass="p-button-success p-button-text p-button-sm" (onClick)="activateUserById(user.id)"></p-button>
             <p-button label="Desactivar" [disabled]="!user.enabled" styleClass="p-button-error p-button-text p-button-sm" (onClick)="deactivateUserById(user.id)"></p-button>
-            <p-button icon="pi pi-user-edit" styleClass="p-button-secondary p-button-text" [routerLink]="['/admin', user.id]"></p-button>
+            <p-button icon="pi pi-user-edit" styleClass="p-button-secondary p-button-text" [routerLink]="['/admin/edit', user.id]"></p-button>
           </td>
       </tr>
     </ng-template>

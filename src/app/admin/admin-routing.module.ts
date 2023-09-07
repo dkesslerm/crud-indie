@@ -11,7 +11,7 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       {
-        path: ':id',
+        path: 'edit/:id',
         component: EditPageComponent,
         pathMatch: 'full'
       },

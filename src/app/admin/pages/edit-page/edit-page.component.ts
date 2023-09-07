@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Aplicacion, User } from '../../interfaces/user.interface';
+import { Aplicacion, Role, User } from '../../interfaces/user.interface';
 import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'admin-edit-user',
+  selector: 'admin-edit-page',
   templateUrl: './edit-page.component.html',
 
 })
-export class EditPageComponent implements OnInit {
+export class EditPageComponent implements OnInit{
 
   constructor(
     private userService: UserService,
@@ -19,10 +19,18 @@ export class EditPageComponent implements OnInit {
   ){}
 
   public userForm = new FormGroup({
-    password:   new FormControl<string>('', {nonNullable: true}),
-    nombre:     new FormControl<string>('', {nonNullable: true}),
-    apellidos:  new FormControl<string>('', {nonNullable: true}),
-    email:      new FormControl<string>('', {nonNullable: true}),
+    nombre: new FormControl<string>(''),
+    apellido:  new FormControl<string>(''),
+    email:      new FormControl<string>(''),
+    password:   new FormControl<string>(''),
+
+    id:         new FormControl<string>(''),
+    enabled:    new FormControl<boolean>(true),
+    roles:      new FormControl<Role[]>([]),
+    intentos:   new FormControl<number>(0),
+    avatar:     new FormControl<null>(null),
+    topt:       new FormControl<boolean>(false),
+    secret:     new FormControl<null>(null),
     aplicacion: new FormControl<Aplicacion>(Aplicacion.INDIe),
   })
 
@@ -30,8 +38,13 @@ export class EditPageComponent implements OnInit {
     {name: 'INDIe'},
   ]
 
+  get currentUser(): User {
+    const user = this.userForm.value as User;
+    return user;
+  }
+
   ngOnInit(): void {
-    if (this.router.url.includes('new')) return;
+    if (!this.router.url.includes('edit')) return;
 
     this.activatedRoute.params
       .pipe(
@@ -44,50 +57,21 @@ export class EditPageComponent implements OnInit {
       })
   }
 
-  public onSubmit(): void{
+  onSubmit(): void{
+    if (!this.userForm.invalid) return;
 
-    if (this.userForm.invalid) return;
+    if (this.currentUser.id) {
+      this.userService.editUserById(this.currentUser.id, this.currentUser)
+        .subscribe( hero => {
+          this.router.navigate(['heroes'])
+        });
 
-    if (this.currentUser.id){
-      this.userService.editUserById(this.currentUser.id)
-        .subscribe( user => {
-          this.router.navigate(['/'])
-        })
+      return;
     }
 
-    this.userService.createUser ( this.currentUser )
-      .subscribe ( user => {
-        this.router.navigate(['/'])
+    this.userService.createUser( this.currentUser )
+      .subscribe(user => {
+        this.router.navigate(['admin/edit', user.id])
       });
   }
-
-  public changeState(){
-    this.currentUser.enabled = !this.currentUser.enabled;
-  }
-
-  get stateLabel(): string {
-    if (this.currentUser.enabled)
-      return 'Desactivar';
-    else
-      return 'Activar';
-  }
-
-  get stateIcon(): string {
-    if (this.currentUser.enabled)
-      return 'pi pi-times';
-    else
-      return 'pi pi-check';
-  }
-
-  get currentUser(): User{
-    let auxUser!: User;
-
-    this.userService.createUser(this.userForm.value as User)
-    .subscribe( user => auxUser = user );
-
-    return auxUser;
-  }
-
-
-
 }

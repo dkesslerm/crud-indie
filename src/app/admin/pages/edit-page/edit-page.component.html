@@ -1,7 +1,7 @@
 <div class="flex justify-content-center mt-5">
 
-  <form class="grid" (formdata)="userForm" (ngSubmit)="onSubmit()">
-    <p-card header="{{ currentUser.id ? 'Editar' : 'Agregar' }} usuario" class="text-center" styleClass="background-color: #F7F6F3;">
+  <form class="grid" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <p-card header="{{ currentUser.nombre ? 'Editar' : 'Agregar' }} usuario" class="text-center" styleClass="background-color: #F7F6F3;">
 
       <div class="justify-content-center m-5 mt-2">
         <span style="width: 100%;" class="p-float-label">
@@ -13,7 +13,7 @@
       <div class="justify-content-center m-5">
         <span class="p-float-label">
           <p-password formControlName="password" [toggleMask]="true"></p-password>
-          <label for="password">Password</label>
+          <label for="password">Contraseña</label>
         </span>
       </div>
 
@@ -26,7 +26,7 @@
 
       <div class="justify-content-center m-5">
         <span style="width: 100%;" class="p-float-label">
-            <input [style]="{'width':'100%'}" pInputText formControlName="apellidos"/>
+            <input [style]="{'width':'100%'}" pInputText formControlName="apellido"/>
             <label>Apellidos</label>
         </span>
       </div>
@@ -44,7 +44,7 @@
       <div [ngClass]="{'flex justify-content-between': '{{ currentUser.id }}',
                        'flex justify-content-center' : '{{ !currentUser.id }}'}">
         <p-button (onClick)="onSubmit()" label="Guardar" icon="pi pi-save" styleClass="p-button-raised p-button-secondary ml-4 mr-2"></p-button>
-        <p-button *ngIf="!currentUser.id" (onClick)="changeState()" label="{{ stateLabel }}" icon="{{ stateIcon }}" styleClass="p-button-raised p-button-danger mr-4"></p-button>
+        <!-- <p-button *ngIf="!currentUser.id" (onClick)="changeState()" label="{{ stateLabel }}" icon="{{ stateIcon }}" styleClass="p-button-raised p-button-danger mr-4"></p-button> -->
       </div>
     </p-card>
   </form>
