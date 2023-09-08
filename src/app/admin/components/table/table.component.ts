@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Role, User } from '../../interfaces/user.interface';
-import { Router } from '@angular/router';
 import { FilterService, MessageService } from 'primeng/api';
-import { Tag } from 'primeng/tag';
 
 @Component({
   selector: 'admin-table',

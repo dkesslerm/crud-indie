@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: 'edit/:id',
+        canActivate: [ AdminGuard ],
         component: EditPageComponent,
-        pathMatch: 'full'
       },
       {
         path: 'new',

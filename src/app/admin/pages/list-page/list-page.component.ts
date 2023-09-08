@@ -15,6 +15,5 @@ export class ListPageComponent implements OnInit{
   ngOnInit(): void {
     this.userService.getUsers()
       .subscribe( (users: User[]) => this.users = users );
-    console.log(this.users)
   }
 }
