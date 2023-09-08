@@ -45,7 +45,7 @@ export class UserService {
     return this.http.patch<User>(`${ this.baseUrl }/admin/deactivate/${ id }`, null)
   }
 
-  public editUserById(id: string, user: User): Observable<User>{
-    return this.http.put<User>(`${ this.baseUrl }/admin/${ id }`, user);
+  public editUserById(id: string): Observable<User>{
+    return this.http.put<User>(`${ this.baseUrl }/admin/${ id }`, null);
   }
 }

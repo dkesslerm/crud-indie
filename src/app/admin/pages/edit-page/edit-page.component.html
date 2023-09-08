@@ -41,8 +41,7 @@
             optionLabel="name"></p-dropdown>
       </div>
 
-      <div [ngClass]="{'flex justify-content-between': '{{ currentUser.id }}',
-                       'flex justify-content-center' : '{{ !currentUser.id }}'}">
+      <div class="flex justify-content-center">
         <p-button (onClick)="onSubmit()" label="Guardar" icon="pi pi-save" styleClass="p-button-raised p-button-secondary ml-4 mr-2"></p-button>
         <!-- <p-button *ngIf="!currentUser.id" (onClick)="changeState()" label="{{ stateLabel }}" icon="{{ stateIcon }}" styleClass="p-button-raised p-button-danger mr-4"></p-button> -->
       </div>

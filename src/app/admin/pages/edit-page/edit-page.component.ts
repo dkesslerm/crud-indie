@@ -61,9 +61,9 @@ export class EditPageComponent implements OnInit{
     if (!this.userForm.invalid) return;
 
     if (this.currentUser.id) {
-      this.userService.editUserById(this.currentUser.id, this.currentUser)
-        .subscribe( hero => {
-          this.router.navigate(['heroes'])
+      this.userService.editUserById(this.currentUser.id)
+        .subscribe( user => {
+          this.router.navigate(['admin'])
         });
 
       return;
