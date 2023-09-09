@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Role, User } from '../../interfaces/user.interface';
 import { FilterService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'admin-table',
@@ -14,8 +16,9 @@ export class TableComponent{
   public users: User[] = [];
 
   constructor( private userService: UserService,
-               private messageService: MessageService,
-               private filterService: FilterService
+              //  private messageService: MessageService,
+               private filterService: FilterService,
+               private router: Router
   ){}
 
   filter(role: Role): boolean{
@@ -56,14 +59,21 @@ export class TableComponent{
     this.userService.deactivateUserById(id)
       .subscribe();
 
-    this.messageService.add({ severity: 'info', summary: 'Desactivado correctamente' })
+    this.router.navigateByUrl('/404', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('admin')
+    })
 
+    // this.messageService.add({ severity: 'info', summary: 'Desactivado correctamente' })
   }
 
   public activateUserById(id: string): void{
     this.userService.activateUserById(id)
       .subscribe();
 
-    this.messageService.add({ severity: 'success', summary: 'Activado correctamente' })
+    // this.messageService.add({ severity: 'success', summary: 'Activado correctamente' });
+
+    this.router.navigateByUrl('/404', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('admin')
+    })
   }
 }

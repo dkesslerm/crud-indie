@@ -5,7 +5,7 @@
     styleClass="p-datatable-gridlines"
     [tableStyle]="{ 'min-width': '50rem' }"
     [paginator]="true"
-    [rows]="5"
+    [rows]="20"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[5, 10, 20]"
@@ -63,7 +63,7 @@
           <td>{{ user.enabled | enabled }}<i class="pi ml-2" [ngClass]="{ 'text-green-500 pi-check-circle': user.enabled, 'text-red-500 pi-times-circle': !user.enabled }"></i></td>
           <td> {{ user.roles | role }}</td>
           <td>
-            <p-toast></p-toast>
+            <!-- <p-toast></p-toast> -->
             <p-button label="Activar" [disabled]="user.enabled" styleClass="p-button-success p-button-text p-button-sm" (onClick)="activateUserById(user.id)"></p-button>
             <p-button label="Desactivar" [disabled]="!user.enabled" styleClass="p-button-error p-button-text p-button-sm" (onClick)="deactivateUserById(user.id)"></p-button>
             <p-button icon="pi pi-user-edit" styleClass="p-button-secondary p-button-text" [routerLink]="['/admin/edit', user.id]"></p-button>
