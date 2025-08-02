@@ -4,11 +4,11 @@ A comprehensive frontend application for managing users, roles, and permissions 
 
 ## Project Overview
 
-This Angular-based application was developed as part of two Erasmus+ KA201 projects (**INDIe** and **INDIe4All**) coordinated by Universidad Politécnica de Cartagena. The platform supports the **DigitALL initiative**, an EU-funded program designed to evaluate and certify digital competencies (A1 to C2 levels) across Spanish higher education institutions.
+This Angular-based application was developed as part of two Erasmus+ KA201 projects, **INDIe** (2018-1-ES01-KA201-050924) and **INDIe4ALL** (2020-1-ES01-KA201-083177), coordinated by Universidad Politécnica de Cartagena. The platform supports the **DigitALL initiative**, an EU-funded program designed to evaluate and certify digital competencies (A1 to C2 levels) across Spanish higher education institutions.
 
 **Key Links:**
-- [DigitALL Project]([DIGITALL_LINK_PLACEHOLDER])
-- [INDIe Project]([INDIE_LINK_PLACEHOLDER])
+- [DigitALL Project](https://www.digitall.org.es/?lang=en)
+- [INDIe Project](https://indieproject.upct.es/)
 
 ## Impact & Production Use
 
@@ -46,14 +46,14 @@ This CRUD application provides comprehensive administrative functionality:
 
 ## Application Demo
 
-### User Creation and Management
-![User Management Demo]([GIF_PLACEHOLDER_1])
+### Authentication
+![Authentication](assets/authentication-demo.gif)
 
-### Role Assignment Process
-![Role Assignment Demo]([GIF_PLACEHOLDER_2])
+### List and Edit Users
+![List and Edit Users](assets/list-edit-users-demo.gif)
 
-### Administrative Dashboard Overview
-![Dashboard Overview Demo]([GIF_PLACEHOLDER_3])
+### Search Functionality
+![Search Functionality](assets/search-functionality-demo.gif)
 
 ## Development Process & Challenges
 
